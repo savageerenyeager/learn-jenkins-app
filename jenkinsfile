@@ -30,9 +30,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    cd /var/jenkins_home/workspace/learn-jenkins-app/build/
-                    pwd
-                    ls -la
+                    test -f build/index.html
                     npm test
                 '''
             }
