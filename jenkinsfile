@@ -76,7 +76,7 @@ pipeline {
             }
         }
 
-        stage('Deploy- staging env') {
+        stage('Deploy-staging env') {
             agent {
                 docker {
                     image 'node:18-alpine'
@@ -91,11 +91,12 @@ pipeline {
                     node_modules/.bin/netlify deploy --dir=build --json >  output.json
                     node_modules/.bin/node-jq -r '.deploy_url' output.json
                 '''
-            }
+            
                 script{
                     env.STAGING_URL= sh(script: "node_modules/.bin/node-jq -r '.deploy_url' output.json", returnStdout: true)
                 }
-        }
+            }
+        }    
         stage('Stage E2E') {
             agent {
                 docker {
