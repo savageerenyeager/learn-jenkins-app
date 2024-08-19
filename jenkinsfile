@@ -123,7 +123,7 @@ pipeline {
 
         stage('Approval') {
             steps {
-                timeout(time: 1, unit: 'MINUTES') {
+                timeout(time: 15, unit: 'MINUTES') {
                    input message: 'Please check stage testing results befoere pressing ok to prod deployment ? ', ok: 'Proceed to prod'
                 } 
              
